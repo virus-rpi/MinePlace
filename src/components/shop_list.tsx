@@ -35,7 +35,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface RowData {
+export interface RowData {
   name: string;
   owner: string;
   location: string;

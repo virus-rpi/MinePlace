@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Image, Text, Tooltip } from "@mantine/core";
 import { items } from "./items";
+import {getUrl} from "../Api";
 
 interface ItemProps {
   names: string[];
@@ -8,6 +9,7 @@ interface ItemProps {
 
 export function Item({ names }: ItemProps) {
   const textNames = names.filter((name) => !items.some((item) => item.name === name));
+  const URL = getUrl();
 
   return (
     <Container style={{alignItems: 'center'}}>
@@ -19,7 +21,7 @@ export function Item({ names }: ItemProps) {
             return (
               <Tooltip key={name} label={item.displayName}>
                 <Image
-                  src={`http://localhost:80/texture/${name}`}
+                  src={URL + `/texture/${name}`}
                   fit={"contain"}
                   width={25}
                   height={25}

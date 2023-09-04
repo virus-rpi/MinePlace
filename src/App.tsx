@@ -1,32 +1,9 @@
-import {Container, MantineProvider, Text} from '@mantine/core';
+import {Button, Container, MantineProvider, Text} from '@mantine/core';
 import { SiteHeader} from "./components/header";
-import { ShopList } from "./components/shop_list";
-import {useState} from "react";
-
-
-const shops = [
-  {
-      name: "Virusrpi's Child Labor Shop",
-      owner: "virusrpi",
-      location: "DM only",
-      rating: 5,
-      items: ["Child Labor"]
-  },
-  {
-    name: "Otaku's House Shop",
-    owner: "Otaku05",
-    location: "/pw Otaku's_house_shop",
-    rating: 5,
-    items: ["Child Labor", "Houses"]
-  },
-  {
-    name: "MineMart",
-    owner: "PrinxeJ",
-    location: "/pw MineMart",
-    rating: 4.5,
-    items: ["Banners", "name_tag", "saddle", "Wool", "Enchanted Book", "Farming Starter Kits"]
-  }
-]
+import {RowData, ShopList} from "./components/shop_list";
+import React, {useEffect, useState} from "react";
+import {getShops} from "./Api";
+import {AddShopButton} from "./components/add_shop";
 
 export enum tabs {
   SHOP = "Shop",
@@ -37,6 +14,14 @@ export enum tabs {
 
 export default function App() {
   const [tab, setTab] = useState(tabs.SHOP)
+  const [data, setData] = useState<RowData[]>([])
+
+  useEffect(
+    () => {
+    getShops().then((shops) => setData(shops))
+    }, []
+  )
+
 
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
@@ -54,7 +39,11 @@ export default function App() {
       />
       <Container size="90%" mt="lg" mb="lg">
         {tab === tabs.SHOP &&
-          <ShopList data={shops} />
+            data.length > 0 &&
+            <>
+              <ShopList data={data} />
+              <AddShopButton />
+            </>
         }
         {tab === tabs.DIAMONDS &&
           <Text>Online Banking coming soon</Text>
