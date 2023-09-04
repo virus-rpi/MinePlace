@@ -78,7 +78,7 @@ export function SiteHeader({ links, tab, setTab }: HeaderSimpleProps) {
     <Header
       height={60}
       mb={10}
-      style={{background: 'linear-gradient(152deg, rgba(214,2,112,1) 0%, rgba(155,79,150,1) 50%, rgba(0,56,168,1) 100%)'}}
+      style={{background: 'linear-gradient(150deg, rgba(214,2,112,1) 0%, rgba(155,79,150,1) 50%, rgba(0,56,168,1) 100%)'}}
     >
       <Container className={classes.header}>
         <Group>

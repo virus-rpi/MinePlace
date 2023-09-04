@@ -1,4 +1,4 @@
-import {Button, Container, MantineProvider, Text} from '@mantine/core';
+import {Container, MantineProvider, Text} from '@mantine/core';
 import { SiteHeader} from "./components/header";
 import {RowData, ShopList} from "./components/shop_list";
 import React, {useEffect, useState} from "react";

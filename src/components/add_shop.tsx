@@ -7,7 +7,7 @@ export function AddShopButton() {
       size="md"
       uppercase
       variant={"gradient"}
-      gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
+      gradient={{ from: '#D60270', to: '#004dea', deg: 0 }}
     >+</Button>
   )
 }
