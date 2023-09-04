@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { createStyles, Header, Container, Group, Burger, rem } from '@mantine/core';
+import {createStyles, Header, Container, Group, Burger, rem, Button} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Image, Text } from '@mantine/core';
 import logo from '../logo.svg';
+import {tabs} from "../App";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -49,30 +50,36 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface HeaderSimpleProps {
-  links: { link: string; label: string }[];
+  links: { link: tabs; label: string }[];
+  tab: tabs;
+  setTab: any;
 }
 
-export function SiteHeader({ links }: HeaderSimpleProps) {
+export function SiteHeader({ links, tab, setTab }: HeaderSimpleProps) {
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const [active, setActive] = useState(tab);
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <a
+    <Button
       key={link.label}
-      href={link.link}
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
       onClick={(event) => {
         event.preventDefault();
+        setTab(link.link)
         setActive(link.link);
       }}
     >
       {link.label}
-    </a>
+    </Button>
   ));
 
   return (
-    <Header height={60} mb={10} style={{background: 'linear-gradient(152deg, rgba(214,2,112,1) 0%, rgba(155,79,150,1) 50%, rgba(0,56,168,1) 100%)'}}>
+    <Header
+      height={60}
+      mb={10}
+      style={{background: 'linear-gradient(152deg, rgba(214,2,112,1) 0%, rgba(155,79,150,1) 50%, rgba(0,56,168,1) 100%)'}}
+    >
       <Container className={classes.header}>
         <Group>
           <Image src={logo} fit={"contain"} width={"50px"} height={"50px"}/>

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "fs": "^0.0.1-security",
     "@emotion/react": "^11.11.1",
     "@mantine/carousel": "^6.0.19",
     "@mantine/core": "^6.0.19",
@@ -33,7 +34,11 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@react-buddy/ide-toolbox": "^2.4.0",
+    "@react-buddy/palette-mantine-core": "^6.0.0",
+    "@react-buddy/palette-mantine-form": "^6.0.0",
+    "@react-buddy/palette-mantine-dates": "^6.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

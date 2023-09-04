@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   createStyles,
   Table,
@@ -12,6 +12,7 @@ import {
 } from '@mantine/core';
 import { keys } from '@mantine/utils';
 import { IconSelector, IconChevronDown, IconChevronUp, IconSearch } from '@tabler/icons-react';
+import {Item} from "./item"
 
 const useStyles = createStyles((theme) => ({
   th: {
@@ -139,15 +140,6 @@ export function ShopList({ data }: TableSortProps) {
     setSortedData(sortData(data, { sortBy, reversed: reverseSortDirection, search: value }));
   };
 
-  const formatItems = (items: string[]) => {
-    if (items.length <= 4) {
-    return items.join(', ');
-  } else {
-    const firstFour = items.slice(0, 4).join(', ');
-    const remainingCount = items.length - 4;
-    return `${firstFour} and ${remainingCount} more`;
-  }
-  }
 
   const rows = sortedData.map((row) => (
     <tr key={row.name}>
@@ -155,7 +147,7 @@ export function ShopList({ data }: TableSortProps) {
       <td>{row.owner}</td>
       <td>{row.location}</td>
       <td>{row.rating}</td>
-      <td>{formatItems(row.items)}</td>
+      <td><Item names={row.items}/></td>
     </tr>
   ));
 
