@@ -4,6 +4,7 @@ import {RowData, ShopList} from "./components/shop_list";
 import React, {useEffect, useState} from "react";
 import {getShops} from "./Api";
 import {AddShopButton} from "./components/add_shop";
+import { Notifications } from '@mantine/notifications';
 
 export enum tabs {
   SHOP = "Shop",
@@ -25,6 +26,7 @@ export default function App() {
 
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
+      <Notifications />
       <SiteHeader
         links={
         [

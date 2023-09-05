@@ -112,7 +112,6 @@ function sortData(
         }
         return aValue - bValue;
       } else {
-        // Handle cases where the values are not strings or numbers
         return 0;
       }
     }),
@@ -146,7 +145,6 @@ export function ShopList({ data }: TableSortProps) {
       <td>{row.name}</td>
       <td>{row.owner}</td>
       <td>{row.location}</td>
-      <td>{row.rating}</td>
       <td><Item names={row.items}/></td>
     </tr>
   ));
@@ -183,13 +181,6 @@ export function ShopList({ data }: TableSortProps) {
               onSort={() => setSorting('location')}
             >
               Location
-            </Th>
-            <Th
-              sorted={sortBy === 'rating'}
-              reversed={reverseSortDirection}
-              onSort={() => setSorting('rating')}
-            >
-              Rating
             </Th>
             <Th
               sorted={sortBy === 'items'}

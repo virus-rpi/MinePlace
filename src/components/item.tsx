@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Image, Text, Tooltip } from "@mantine/core";
+import {Container, Group, Image, Text, Tooltip} from "@mantine/core";
 import { items } from "./items";
 import {getUrl} from "../Api";
 
@@ -13,7 +13,7 @@ export function Item({ names }: ItemProps) {
 
   return (
     <Container style={{alignItems: 'center'}}>
-      <Container style={{ display: 'flex' }}>
+      <Group position="center" spacing="xs">
         {names.map((name) => {
           const item = items.find((item) => item.name === name);
 
@@ -32,7 +32,7 @@ export function Item({ names }: ItemProps) {
             return null;
           }
         })}
-      </Container>
+      </Group>
       {textNames.length > 4 ? (
         <Text>
           {textNames.slice(0, 4).join(", ")} and {textNames.length - 4} more
