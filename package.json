@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "fs": "^0.0.1-security",
+    "axios": "^1.5.0",
     "@emotion/react": "^11.11.1",
     "@mantine/carousel": "^6.0.19",
     "@mantine/core": "^6.0.19",
