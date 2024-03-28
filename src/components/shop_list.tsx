@@ -10,7 +10,6 @@ import {
   TextInput,
   rem,
 } from '@mantine/core';
-import { keys } from '@mantine/utils';
 import { IconSelector, IconChevronDown, IconChevronUp, IconSearch } from '@tabler/icons-react';
 import {Item} from "./item"
 
@@ -75,16 +74,22 @@ function Th({ children, reversed, sorted, onSort }: ThProps) {
 
 function filterData(data: RowData[], search: string) {
   const query = search.toLowerCase().trim();
-  return data.filter((item) =>
-    keys(data[0]).some((key) => {
-      const value = item[key];
-      if (typeof value === 'string') {
-        return value.toLowerCase().includes(query);
-      }
-      return false;
-    })
-  );
+  return data.filter((item) => {
+    return (
+      // Check if any of the fields in the item object match the query
+      Object.values(item).some((value) => {
+        if (typeof value === 'string') {
+          return value.toLowerCase().includes(query);
+        } else if (Array.isArray(value)) {
+          // If the value is an array (e.g., items), check if any item in the array matches the query
+          return value.some((item) => item.toLowerCase().includes(query));
+        }
+        return false;
+      })
+    );
+  });
 }
+
 
 function sortData(
   data: RowData[],

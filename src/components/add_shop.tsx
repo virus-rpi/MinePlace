@@ -1,7 +1,6 @@
-import {Button, createStyles, MultiSelect, Portal, rem, Group, Image, Text} from "@mantine/core";
+import {Button, createStyles, MultiSelect, Portal, rem, Group, Text, Modal, TextInput} from "@mantine/core";
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, TextInput } from '@mantine/core';
-import React, {forwardRef, Suspense, useEffect, useState} from "react";
+import React, {forwardRef, useEffect, useState} from "react";
 import {items} from "./items";
 import {createShop, getUrl} from "../Api";
 import {notifications} from "@mantine/notifications";
@@ -79,20 +78,6 @@ export function AddShopButton() {
     ({ label, value, image, ...others }: ItemProps, ref) => (
       <div ref={ref} {...others}>
         <Group noWrap>
-          {/*
-          {image !== "" &&
-              <Suspense>
-                <Image
-                  height={25}
-                  width={25}
-                  src={image}
-                  alt={label}
-                  withPlaceholder
-                />
-              </Suspense>
-          }
-          */}
-
           <div>
             <Text>{label}</Text>
             {label !== value &&
