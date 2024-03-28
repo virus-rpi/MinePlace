@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const URL = "http://" + (process.env.REACT_APP_ENV === "prod" ? process.env.REACT_APP_PROD_BACKEND_IP : process.env.REACT_APP_DEV_BACKEND_IP) + ":" + process.env.REACT_APP_BACKEND_PORT;
+const URL = "https://" + (process.env.REACT_APP_ENV === "prod" ? process.env.REACT_APP_PROD_BACKEND_IP : process.env.REACT_APP_DEV_BACKEND_IP) + ":" + process.env.REACT_APP_BACKEND_PORT;
 
 export function getUrl() {
   return URL
